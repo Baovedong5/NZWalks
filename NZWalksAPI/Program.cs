@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NZWalksAPI.Core.Databases;
+using NZWalksAPI.Core.IRepositories;
+using NZWalksAPI.Core.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,8 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 {
     options.UseOracle(connection);
 });
+
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 
 var app = builder.Build();
 
