@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using NZWalksAPI.Core.DTOs;
 using NZWalksAPI.Core.IRepositories;
 using NZWalksAPI.Core.Models;
+using NZWalksAPI.Utils;
+
 
 
 namespace NZWalksAPI.Controllers
@@ -23,6 +25,7 @@ namespace NZWalksAPI.Controllers
         }
 
         [HttpPost]
+        [ValidationModelAttibute]
         public async Task<IActionResult> Create([FromBody] CreateWalkRequestDto createWalkRequestDto)
         {
             //Map DTO to Domain Model
@@ -66,6 +69,8 @@ namespace NZWalksAPI.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [ValidationModelAttibute]
+
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateWalkRequestDto updateWalkRequestDto)
         {
             //Map DYo to Domain Model
